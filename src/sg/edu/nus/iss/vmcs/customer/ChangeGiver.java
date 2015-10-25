@@ -7,8 +7,8 @@
  */
 package sg.edu.nus.iss.vmcs.customer;
 
-import sg.edu.nus.iss.vmcs.li.CoinDispenseChain;
-import sg.edu.nus.iss.vmcs.li.Currency;
+import sg.edu.nus.iss.vmcs.ChangeGiverChainOfResp.CoinDispenseChain;
+import sg.edu.nus.iss.vmcs.ChangeGiverChainOfResp.Currency;
 import sg.edu.nus.iss.vmcs.store.CashStoreItem;
 import sg.edu.nus.iss.vmcs.store.Coin;
 import sg.edu.nus.iss.vmcs.store.Store;

@@ -9,8 +9,8 @@ package sg.edu.nus.iss.vmcs.system;
 
 import java.io.IOException;
 
-import sg.edu.nus.iss.vmcs.ca.PropertyAbstractFactory;
-import sg.edu.nus.iss.vmcs.ca.PropertyFactoryProducer;
+import sg.edu.nus.iss.vmcs.PropLoaderAbstractFactory.PropertyAbstractFactory;
+import sg.edu.nus.iss.vmcs.PropLoaderAbstractFactory.PropertyFactoryProducer;
 import sg.edu.nus.iss.vmcs.customer.TransactionController;
 import sg.edu.nus.iss.vmcs.machinery.MachineryController;
 import sg.edu.nus.iss.vmcs.maintenance.MaintenanceController;

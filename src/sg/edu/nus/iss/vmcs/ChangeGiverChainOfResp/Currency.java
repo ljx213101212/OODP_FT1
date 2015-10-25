@@ -1,4 +1,4 @@
-package sg.edu.nus.iss.vmcs.li;
+package sg.edu.nus.iss.vmcs.ChangeGiverChainOfResp;
 
 public class Currency {
 

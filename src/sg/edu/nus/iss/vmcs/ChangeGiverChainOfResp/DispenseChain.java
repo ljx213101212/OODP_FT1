@@ -1,4 +1,4 @@
-package sg.edu.nus.iss.vmcs.li;
+package sg.edu.nus.iss.vmcs.ChangeGiverChainOfResp;
 
 import sg.edu.nus.iss.vmcs.customer.TransactionController;
 import sg.edu.nus.iss.vmcs.store.Coin;

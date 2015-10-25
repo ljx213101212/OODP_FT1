@@ -20,12 +20,12 @@ import java.awt.Label;
 import java.awt.Panel;
 import java.awt.Toolkit;
 
+import sg.edu.nus.iss.vmcs.PanelFactory.PanelComponent;
+import sg.edu.nus.iss.vmcs.PanelFactory.PanelFactory;
 import sg.edu.nus.iss.vmcs.store.Store;
 import sg.edu.nus.iss.vmcs.util.LabelledDisplay;
 import sg.edu.nus.iss.vmcs.util.VMCSException;
 import sg.edu.nus.iss.vmcs.util.WarningDisplay;
-import sg.edu.nus.iss.vmcs.yangcheng.PanelComponent;
-import sg.edu.nus.iss.vmcs.yangcheng.PanelFactory;
 
 /**
  * This panel simulates the vending machines maintainer control panel&#46;

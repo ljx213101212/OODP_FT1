@@ -1,4 +1,4 @@
-package sg.edu.nus.iss.vmcs.yangcheng;
+package sg.edu.nus.iss.vmcs.PanelFactory;
 
 import java.awt.Panel;
 

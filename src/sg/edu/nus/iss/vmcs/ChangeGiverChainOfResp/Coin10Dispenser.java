@@ -1,4 +1,4 @@
-package sg.edu.nus.iss.vmcs.li;
+package sg.edu.nus.iss.vmcs.ChangeGiverChainOfResp;
 
 import sg.edu.nus.iss.vmcs.customer.TransactionController;
 import sg.edu.nus.iss.vmcs.store.Coin;
@@ -7,11 +7,11 @@ import sg.edu.nus.iss.vmcs.store.StoreController;
 import sg.edu.nus.iss.vmcs.store.StoreItem;
 import sg.edu.nus.iss.vmcs.util.VMCSException;
 
-public class Coin20Dispenser extends DispenseChain{
+public class Coin10Dispenser extends DispenseChain{
 
-	private int indexGap = 3;
 	
-	public Coin20Dispenser(StoreController storeCtrl,int chainLength) {
+	private int indexGap = 4;
+	public Coin10Dispenser(StoreController storeCtrl,int chainLength) {
 		super(storeCtrl,chainLength);
 		
 		if (chainLength - 1 < 0){
@@ -24,4 +24,7 @@ public class Coin20Dispenser extends DispenseChain{
 		quantity = cashStoreItem.getQuantity();
 		offerValue = coin.getValue();
 	}
+   
+	
+	
 }

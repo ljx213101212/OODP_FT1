@@ -9,8 +9,11 @@ package sg.edu.nus.iss.vmcs.system;
 
 import java.io.IOException;
 
+<<<<<<< HEAD
+=======
 import sg.edu.nus.iss.vmcs.PropLoaderAbstractFactory.PropertyAbstractFactory;
 import sg.edu.nus.iss.vmcs.PropLoaderAbstractFactory.PropertyFactoryProducer;
+>>>>>>> 6f705d333dafa8f25d92c3ec9b5dd35f5abe4fad
 import sg.edu.nus.iss.vmcs.customer.TransactionController;
 import sg.edu.nus.iss.vmcs.machinery.MachineryController;
 import sg.edu.nus.iss.vmcs.maintenance.MaintenanceController;
@@ -62,6 +65,17 @@ public class MainController {
 	 */
 	public void initialize() throws VMCSException {
 		try {
+<<<<<<< HEAD
+			
+			Environment.initialize(propertyFile);
+			FilePropertyFactory dataType = (FilePropertyFactory)PropertyAbstractFactory.getDAOFactory(1);
+			FilePropertyLoader cashLoader=dataType.getLoader("cash",Environment.getCashPropFile());
+			FilePropertyLoader drinksLoader = dataType.getLoader("drink",Environment.getDrinkPropFile());
+						
+			cashLoader.initialize();
+			drinksLoader.initialize();
+						
+=======
 			Environment.initialize(propertyFile);
 			PropertyAbstractFactory fileFactory = PropertyFactoryProducer.getFactory("file");
 			FilePropertyLoader cashLoader = fileFactory.getFilePropertyLoader("cash");
@@ -72,6 +86,7 @@ public class MainController {
 //				new DrinkPropertyLoader(Environment.getDrinkPropFile());
 			cashLoader.initialize();
 			drinksLoader.initialize();
+>>>>>>> 6f705d333dafa8f25d92c3ec9b5dd35f5abe4fad
 			storeCtrl = new StoreController(cashLoader, drinksLoader);
 			storeCtrl.initialize();
 			simulatorCtrl = new SimulationController(this);

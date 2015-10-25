@@ -1,5 +1,5 @@
 #
-#Sun Oct 25 17:55:58 CST 2015
+#Sun Oct 25 19:56:48 SGT 2015
 Name6=Soya Bean
 Name5=Coca-Cola
 Name4=Soya Bean
@@ -7,12 +7,12 @@ Name3=Sarsi
 Name2=Fanta
 Name1=Coca-Cola
 NumOfItems=6
-Quantity6=999
-Quantity5=999
-Quantity4=999
-Quantity3=997
-Quantity2=997
-Quantity1=999
+Quantity6=9
+Quantity5=13
+Quantity4=11
+Quantity3=10
+Quantity2=3
+Quantity1=8
 Price6=90
 Price5=100
 Price4=90

@@ -131,4 +131,8 @@ public abstract class Store {
 	public int getStoreSize() {
 		return size;
 	}
+	
+	abstract public Store initializeStore(PropertyLoader propLoad, Store store);
+	
+	abstract public Store getList(PropertyLoader proLoad, Store store);
 }//End of class Store

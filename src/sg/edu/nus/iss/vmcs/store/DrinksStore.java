@@ -31,4 +31,37 @@ public class DrinksStore extends Store {
 	 */
 	public DrinksStore() {
 	}
+
+	@Override
+	public Store initializeStore(PropertyLoader propLoad, Store store) {
+		// TODO Auto-generated method stub
+		DrinksStore dStore = (DrinksStore) store;
+		int numOfItems = propLoad.getNumOfItems();
+		dStore.setStoreSize(numOfItems);
+		getList(propLoad,dStore);
+//		for (int i = 0; i < numOfItems; i++) {
+//            DrinksStoreItem item = (DrinksStoreItem) propLoad.getItem(i);
+//			StoreObject brand = item.getContent();
+//			StoreObject existingBrand = dStore.findObject(brand.getName());
+//			if (existingBrand != null) {
+//			    item.setContent(existingBrand);
+//			}
+//			dStore.addItem(i, item);
+//		}
+		return dStore;
+	}
+	
+	public Store getList(PropertyLoader propLoad, Store store){
+		Store dStore = (DrinksStore) store;
+		for (int i = 0; i < propLoad.getNumOfItems(); i++) {
+            DrinksStoreItem item = (DrinksStoreItem) propLoad.getItem(i);
+			StoreObject brand = item.getContent();
+			StoreObject existingBrand = dStore.findObject(brand.getName());
+			if (existingBrand != null) {
+			    item.setContent(existingBrand);
+			}
+			dStore.addItem(i, item);
+		}
+		return dStore;
+	}
 }//End of class DrinksStore

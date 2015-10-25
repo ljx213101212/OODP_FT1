@@ -82,4 +82,29 @@ public class CashStore extends Store {
 		}
 		return null;
 	}
+
+	@Override
+	public Store initializeStore(PropertyLoader propLoad, Store store) {
+		// TODO Auto-generated method stub
+		// get the cash file from the environment property file;
+		CashStore cStore = (CashStore) store;
+			int numOfItems = propLoad.getNumOfItems();
+			this.setStoreSize(numOfItems);
+			getList(propLoad,this);
+//			for (int i = 0; i < numOfItems; i++) {
+//			    CashStoreItem item = (CashStoreItem) propLoad.getItem(i);
+//			    cStore.addItem(i, item);
+//			}
+		return cStore;
+	}
+	
+	public Store getList(PropertyLoader propLoad, Store store){
+		CashStore cStore = (CashStore) store;
+		for (int i = 0; i < propLoad.getNumOfItems(); i++) {
+		    CashStoreItem item = (CashStoreItem) propLoad.getItem(i);
+		    this.addItem(i, item);
+		}
+		System.out.println("Size: " + cStore.size);
+		return cStore;
+	}
 }//End of class CashStore

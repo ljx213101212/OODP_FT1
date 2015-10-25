@@ -61,8 +61,10 @@ public class StoreController {
 	 * @throws IOException if fail to initialize stores; reading properties.
 	 */
 	private void initializeStores() throws IOException {
-		initializeCashStore();
-		initializeDrinkStore();
+//		initializeCashStore();
+//		initializeDrinkStore();
+		cStore = (CashStore) cStore.initializeStore(cashLoader, cStore);
+		dStore = (DrinksStore) dStore.initializeStore(drinksLoader, dStore);
 	}
 
 	/**

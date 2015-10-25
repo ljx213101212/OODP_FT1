@@ -57,7 +57,6 @@ public class MaintenanceController {
 		if (mpanel == null)
 			mpanel = new MaintenancePanel((Frame) scp, this);
 		mpanel.display();
-		mpanel.getCoinDisplay().getBi().getItems()[2].getValue().setText("madan3");
 		mpanel.setActive(MaintenancePanel.DIALOG, true);
 		// setActive of password, invalid and valid display.
 	}

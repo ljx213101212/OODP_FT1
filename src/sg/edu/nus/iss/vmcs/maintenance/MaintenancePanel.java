@@ -9,6 +9,7 @@ package sg.edu.nus.iss.vmcs.maintenance;
 
 import java.awt.BorderLayout;
 import java.awt.Button;
+import java.awt.Component;
 import java.awt.Dialog;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -23,6 +24,8 @@ import sg.edu.nus.iss.vmcs.store.Store;
 import sg.edu.nus.iss.vmcs.util.LabelledDisplay;
 import sg.edu.nus.iss.vmcs.util.VMCSException;
 import sg.edu.nus.iss.vmcs.util.WarningDisplay;
+import sg.edu.nus.iss.vmcs.yangcheng.PanelComponent;
+import sg.edu.nus.iss.vmcs.yangcheng.PanelFactory;
 
 /**
  * This panel simulates the vending machines maintainer control panel&#46;
@@ -65,14 +68,15 @@ public class MaintenancePanel extends Dialog {
 	private LabelledDisplay password;
 	private LabelledDisplay collectCash;
 	private Button exitBtn;
-	private CoinDisplay cDisplay; // need to be access from other class.
-	private DrinkDisplay dDisplay; // need to be access from other class.
+	private PanelComponent cDisplay; // need to be access from other class.
+	private PanelComponent dDisplay; // need to be access from other class.
+	private PanelFactory panelfactory;
 	private ButtonItem totalCash;
 	private Button transferCash;
 	private WarningDisplay validPswd;
 	private WarningDisplay invalidPswd;
 	private MaintenanceController mctrl;
-
+	private PanelComponent fDisplay;
 	/**
 	 * This constructor creates an instance of MaintenancePanel object.
 	 * @param fr the parent frame.
@@ -80,9 +84,10 @@ public class MaintenancePanel extends Dialog {
 	 */
 	public MaintenancePanel(Frame fr, MaintenanceController mc) {
 		super(fr, TITLE, false);
-
+		
+		//controller
 		mctrl = mc;
-
+		panelfactory = new PanelFactory(mctrl);
 		// north part
 		Label lb = new Label(TITLE);
 		lb.setFont(new Font("Helvetica", Font.BOLD, 24));
@@ -108,15 +113,25 @@ public class MaintenancePanel extends Dialog {
 		// center part
 		Panel tpc = new Panel();
 		tpc.setLayout(new GridLayout(0, 1));
+		
+		cDisplay = panelfactory.getPanelComponent("coinpanel");
+	
+		
+		dDisplay = panelfactory.getPanelComponent("drinkpanel");
 
-		cDisplay = new CoinDisplay(mctrl);
-		System.out.println(cDisplay.getBi().getItems().length);
-		cDisplay.getBi().getItems()[1].getValue().setText("1231");
-		dDisplay = new DrinkDisplay(mctrl);
+		
+		
+
+		Panel pp = new Panel();
+		pp.setLayout(new GridLayout(1, 3));
+		pp.add((Component) cDisplay);
+	    pp.add((Component) dDisplay);
+	 
+		
 
 		Panel tp5 = new Panel();
 		tp5.setLayout(new GridLayout(0, 1));
-
+		
 		totalCash = new ButtonItem("Show Total Cash Held", 5, ButtonItem.FLOW);
 		TotalCashButtonListener tl;
 
@@ -140,10 +155,7 @@ public class MaintenancePanel extends Dialog {
 		tp5.add(collectCash);
 		tp5.add(exitBtn);
 		tpc.setLayout(new BorderLayout());
-		Panel pp = new Panel();
-		pp.setLayout(new GridLayout(1, 2));
-		pp.add(cDisplay);
-		pp.add(dDisplay);
+	
 		tpc.add("Center", pp);
 		tpc.add("South", tp5);
 
@@ -186,7 +198,7 @@ public class MaintenancePanel extends Dialog {
 	 * This method returns the CoinDisplay.
 	 * @return the CoinDisplay.
 	 */
-	public CoinDisplay getCoinDisplay() {
+	public PanelComponent getCoinDisplay() {
 		return cDisplay;
 	}
 
@@ -194,8 +206,12 @@ public class MaintenancePanel extends Dialog {
 	 * This method returns the DrinksDisplay.
 	 * @return the DrinksDisplay.
 	 */
-	public DrinkDisplay getDrinksDisplay() {
+	public PanelComponent getDrinksDisplay() {
 		return dDisplay;
+	}
+	
+	public PanelComponent getFoodDisplay() {
+		return fDisplay;
 	}
 
 	/**

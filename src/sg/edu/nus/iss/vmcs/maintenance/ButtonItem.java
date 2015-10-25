@@ -16,14 +16,6 @@ import java.awt.event.*;
  * @author Olivo Miotto, Pang Ping Li
  */
 public class ButtonItem extends Panel {
-	public Label getValue() {
-		return value;
-	}
-
-	public void setValue(Label value) {
-		this.value = value;
-	}
-
 	/**This constant attribute denotes the default length of the button label*/
 	public final static int DEFAULT_LEN = 5;
 	/**This constant attribute denotes the flow layout for button item content*/
@@ -107,7 +99,7 @@ public class ButtonItem extends Panel {
 		String sqt;
 
 		sqt = String.valueOf(vl);
-		value.setBackground(Color.orange);
+		value.setBackground(ACT_COLOR);
 		value.setText(sqt);
 	}
 

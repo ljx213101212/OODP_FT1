@@ -105,7 +105,10 @@ public class DrinkSelectionBox extends Panel{
 			return;
 		drinkSelectionItems[index].setState(active);
 	}
-	
+	public DrinkSelectionItem[] getDrinksSelection()
+        {
+        return drinkSelectionItems;
+        }
 	/**
 	 * This method activates or deactivates the drink selection buttons on the Customer Panel.
 	 * This method also displays OUT OF STOCK messages where appropriate.

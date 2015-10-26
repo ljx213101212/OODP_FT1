@@ -154,6 +154,9 @@ public class TransactionController {
 			getCustomerPanel().setChange(0);
 		}
 		coinReceiver.storeCash();
+                new DrinksObserver(dispenseCtrl);
+                dispenseCtrl.checkState();
+                
 		dispenseCtrl.allowSelection(true);
 		
 		refreshMachineryDisplay();

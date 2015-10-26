@@ -7,6 +7,8 @@
  */
 package sg.edu.nus.iss.vmcs.customer;
 
+import java.util.ArrayList;
+import java.util.List;
 import sg.edu.nus.iss.vmcs.store.DrinksBrand;
 import sg.edu.nus.iss.vmcs.store.Store;
 import sg.edu.nus.iss.vmcs.store.StoreController;
@@ -23,7 +25,10 @@ import sg.edu.nus.iss.vmcs.util.VMCSException;
 public class DispenseController {
     private TransactionController txCtrl;
     private int selection=0;
-	
+    private int state=0;
+    private ArrayList<String>names=new ArrayList();
+    
+	private List<Observer> observers = new ArrayList<Observer>();
     /**
      * This constructor creates an instance of the object.
      * @param txCtrl the Transaction Controller
@@ -32,6 +37,27 @@ public class DispenseController {
     	this.txCtrl=txCtrl;
     }
     
+   //attach for Observer pattern
+    
+             public void attach(Observer observer){
+                    observers.add(observer);
+                }
+             
+    // Notify all observers
+             
+             public void notifyAllObservers(){
+                    for (Observer observer : observers) {
+                    observer.update(names);
+                }
+            }
+             
+             public void checkState()
+             {
+             if(names.size()!=0){
+             notifyAllObservers();
+             }
+             }
+                     
     /**
      * This method updates the whole Drink Selection Box with current names, stocks and prices.
      */
@@ -71,6 +97,7 @@ public class DispenseController {
 		if(custPanel==null){
 			return;
 		}
+                state=0;
 		DrinkSelectionBox drinkSelectionBox=custPanel.getDrinkSelectionBox();
 		StoreController storeCtrl=mainCtrl.getStoreController();
 		int storeSize=storeCtrl.getStoreSize(Store.DRINK);
@@ -78,8 +105,15 @@ public class DispenseController {
 			drinkSelectionBox.setState(i,allow);
 			StoreItem storeItem=storeCtrl.getStoreItem(Store.DRINK, i);
 			int quantity=storeItem.getQuantity();
-			if(quantity==0)
-				drinkSelectionBox.setItemState(i,true);
+			if(quantity<10)
+                        { 
+                         names.add((drinkSelectionBox.getDrinksSelection()[i]).getName());
+                         //namess[i]=(drinkSelectionBox.getDrinksSelection()[i]).getName();
+                         if (quantity==0){
+                         drinkSelectionBox.setItemState(i,true);
+                            }
+                        }  
+                        
 		}
 	}
 	
